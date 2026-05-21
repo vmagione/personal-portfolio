@@ -2,16 +2,18 @@
 
 import { useEffect, useRef } from "react";
 
+type ProficiencyLevel = "Proficient" | "Familiar" | "Learning";
+
 const skillGroups = [
   {
     category: "Frontend",
     icon: "🎨",
     color: "purple",
     skills: [
-      { name: "Angular 19+", level: 90 },
-      { name: "Next.js / React", level: 85 },
-      { name: "TypeScript", level: 90 },
-      { name: "HTML / CSS", level: 95 },
+      { name: "Angular 19+", level: "Proficient" as ProficiencyLevel },
+      { name: "Next.js / React", level: "Proficient" as ProficiencyLevel },
+      { name: "TypeScript", level: "Proficient" as ProficiencyLevel },
+      { name: "HTML / CSS", level: "Proficient" as ProficiencyLevel },
     ],
   },
   {
@@ -19,10 +21,10 @@ const skillGroups = [
     icon: "⚙️",
     color: "cyan",
     skills: [
-      { name: "Java + Spring Boot", level: 88 },
-      { name: "Node.js / Fastify", level: 85 },
-      { name: "REST API Design", level: 92 },
-      { name: "OutSystems Reactive", level: 95 },
+      { name: "Java + Spring Boot", level: "Proficient" as ProficiencyLevel },
+      { name: "Node.js / Fastify", level: "Proficient" as ProficiencyLevel },
+      { name: "REST API Design", level: "Proficient" as ProficiencyLevel },
+      { name: "OutSystems Reactive", level: "Proficient" as ProficiencyLevel },
     ],
   },
   {
@@ -30,10 +32,10 @@ const skillGroups = [
     icon: "🗄️",
     color: "pink",
     skills: [
-      { name: "PostgreSQL", level: 82 },
-      { name: "Redis", level: 75 },
-      { name: "Docker", level: 80 },
-      { name: "GitHub Actions / CI/CD", level: 78 },
+      { name: "PostgreSQL", level: "Proficient" as ProficiencyLevel },
+      { name: "Docker", level: "Familiar" as ProficiencyLevel },
+      { name: "Redis", level: "Familiar" as ProficiencyLevel },
+      { name: "GitHub Actions / CI/CD", level: "Familiar" as ProficiencyLevel },
     ],
   },
   {
@@ -41,9 +43,9 @@ const skillGroups = [
     icon: "🎮",
     color: "orange",
     skills: [
-      { name: "Godot 4.x / GDScript", level: 75 },
-      { name: "Unity / C#", level: 70 },
-      { name: "Game Architecture", level: 72 },
+      { name: "Godot 4.x / GDScript", level: "Familiar" as ProficiencyLevel },
+      { name: "Game Architecture", level: "Familiar" as ProficiencyLevel },
+      { name: "Unity / C#", level: "Learning" as ProficiencyLevel },
     ],
   },
 ];
@@ -56,31 +58,23 @@ const techBadges = [
   "Prisma", "BullMQ", "Turborepo", "Git", "REST APIs",
 ];
 
-const colorMap: Record<string, { bar: string; border: string; text: string; bg: string }> = {
-  purple: {
-    bar: "bg-gradient-to-r from-purple-600 to-purple-400",
-    border: "border-purple-600/30",
-    text: "text-purple-300",
-    bg: "bg-purple-600/10",
-  },
-  cyan: {
-    bar: "bg-gradient-to-r from-cyan-600 to-cyan-400",
-    border: "border-cyan-600/30",
-    text: "text-cyan-300",
-    bg: "bg-cyan-600/10",
-  },
-  pink: {
-    bar: "bg-gradient-to-r from-pink-600 to-pink-400",
-    border: "border-pink-600/30",
-    text: "text-pink-300",
-    bg: "bg-pink-600/10",
-  },
-  orange: {
-    bar: "bg-gradient-to-r from-orange-600 to-orange-400",
-    border: "border-orange-600/30",
-    text: "text-orange-300",
-    bg: "bg-orange-600/10",
-  },
+const levelStyle: Record<ProficiencyLevel, string> = {
+  Proficient: "bg-emerald-500/15 text-emerald-400 border border-emerald-500/30",
+  Familiar:   "bg-sky-500/15 text-sky-400 border border-sky-500/30",
+  Learning:   "bg-amber-500/15 text-amber-400 border border-amber-500/30",
+};
+
+const levelDot: Record<ProficiencyLevel, string> = {
+  Proficient: "bg-emerald-400",
+  Familiar:   "bg-sky-400",
+  Learning:   "bg-amber-400",
+};
+
+const colorMap: Record<string, { border: string; text: string; bg: string }> = {
+  purple: { border: "border-purple-600/30", text: "text-purple-300", bg: "bg-purple-600/10" },
+  cyan:   { border: "border-cyan-600/30",   text: "text-cyan-300",   bg: "bg-cyan-600/10"   },
+  pink:   { border: "border-pink-600/30",   text: "text-pink-300",   bg: "bg-pink-600/10"   },
+  orange: { border: "border-orange-600/30", text: "text-orange-300", bg: "bg-orange-600/10" },
 };
 
 export default function Skills() {
@@ -90,17 +84,7 @@ export default function Skills() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            // Animate progress bars
-            const bars =
-              entry.target.querySelectorAll<HTMLElement>("[data-progress]");
-            bars.forEach((bar) => {
-              const progress = bar.dataset.progress || "0";
-              bar.style.setProperty("--progress", `${progress}%`);
-              bar.classList.add("progress-animate");
-            });
-          }
+          if (entry.isIntersecting) entry.target.classList.add("visible");
         });
       },
       { threshold: 0.15 }
@@ -113,7 +97,6 @@ export default function Skills() {
 
   return (
     <section id="skills" className="py-28 relative" ref={sectionRef}>
-      {/* Background glow */}
       <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-cyan-900/10 blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-purple-900/10 blur-3xl pointer-events-none" />
 
@@ -132,7 +115,17 @@ export default function Skills() {
           </p>
         </div>
 
-        {/* Skill groups with progress bars */}
+        {/* Legend */}
+        <div className="reveal flex justify-center gap-6 mb-10 flex-wrap">
+          {(["Proficient", "Familiar", "Learning"] as ProficiencyLevel[]).map((lvl) => (
+            <div key={lvl} className="flex items-center gap-2">
+              <span className={`w-2 h-2 rounded-full ${levelDot[lvl]}`} />
+              <span className="text-gray-400 text-sm">{lvl}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* Skill groups */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
           {skillGroups.map((group, gi) => {
             const c = colorMap[group.color];
@@ -144,28 +137,15 @@ export default function Skills() {
               >
                 <div className="flex items-center gap-3 mb-6">
                   <span className="text-2xl">{group.icon}</span>
-                  <h3 className={`text-lg font-bold ${c.text}`}>
-                    {group.category}
-                  </h3>
+                  <h3 className={`text-lg font-bold ${c.text}`}>{group.category}</h3>
                 </div>
-                <div className="space-y-4">
+                <div className="space-y-3">
                   {group.skills.map((skill) => (
-                    <div key={skill.name}>
-                      <div className="flex justify-between items-center mb-1.5">
-                        <span className="text-gray-300 text-sm font-medium">
-                          {skill.name}
-                        </span>
-                        <span className="text-gray-500 text-xs font-mono">
-                          {skill.level}%
-                        </span>
-                      </div>
-                      <div className="h-1.5 bg-white/5 rounded-full overflow-hidden">
-                        <div
-                          className={`h-full rounded-full ${c.bar} w-0`}
-                          data-progress={skill.level}
-                          style={{ "--progress": `${skill.level}%` } as React.CSSProperties}
-                        />
-                      </div>
+                    <div key={skill.name} className="flex items-center justify-between">
+                      <span className="text-gray-300 text-sm font-medium">{skill.name}</span>
+                      <span className={`text-xs font-semibold px-3 py-1 rounded-full ${levelStyle[skill.level]}`}>
+                        {skill.level}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -194,9 +174,7 @@ export default function Skills() {
 
         {/* Currently learning */}
         <div className="reveal mt-14 text-center">
-          <p className="text-gray-500 text-sm font-mono mb-4">
-            // currently exploring
-          </p>
+          <p className="text-gray-500 text-sm font-mono mb-4">// currently exploring</p>
           <div className="flex flex-wrap justify-center gap-3">
             {["Go", "VR Development", "Shader Programming", "AI Agents", "Pixel Art", "Self-hosted LLMs"].map(
               (item) => (

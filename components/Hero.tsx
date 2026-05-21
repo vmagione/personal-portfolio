@@ -62,12 +62,6 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-        {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-purple-600/40 bg-purple-600/10 text-purple-300 text-sm font-medium mb-8 animate-fade-in-up">
-          <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-          Available for new opportunities
-        </div>
-
         {/* Name */}
         <h1 className="text-5xl md:text-7xl font-black mb-4 leading-tight tracking-tight">
           <span className="text-white">Vinnícius</span>

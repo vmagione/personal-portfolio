@@ -88,8 +88,8 @@ export default function Contact() {
             Let&apos;s Work Together
           </h2>
           <p className="text-gray-400 max-w-xl mx-auto text-lg">
-            Open to new opportunities, collaborations, or just a good
-            conversation about tech and games. Reach out anytime.
+            Always up for a good conversation about tech, games, or side
+            projects. Feel free to reach out anytime.
           </p>
         </div>
 
@@ -118,46 +118,6 @@ export default function Contact() {
           ))}
         </div>
 
-        {/* Availability banner */}
-        <div className="reveal">
-          <div className="relative rounded-2xl overflow-hidden border border-purple-600/30 p-8 text-center bg-gradient-to-br from-purple-900/20 to-cyan-900/10">
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-600/5 to-cyan-500/5" />
-            <div className="relative z-10">
-              <div className="flex items-center justify-center gap-2 mb-3">
-                <span className="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse" />
-                <span className="text-green-400 font-semibold text-sm">
-                  Currently available
-                </span>
-              </div>
-              <p className="text-white text-xl font-bold mb-2">
-                Open to new opportunities
-              </p>
-              <p className="text-gray-400 text-sm max-w-sm mx-auto mb-6">
-                Looking for full-stack, backend, or full-remote positions where
-                I can build great products and grow technically.
-              </p>
-              <a
-                href="mailto:vinniciusmagione@gmail.com"
-                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-semibold text-white bg-gradient-to-r from-purple-600 to-cyan-500 hover:from-purple-500 hover:to-cyan-400 transition-all duration-300 shadow-lg hover:shadow-purple-500/30 hover:-translate-y-0.5"
-              >
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  />
-                </svg>
-                Send me an email
-              </a>
-            </div>
-          </div>
-        </div>
       </div>
 
       {/* Footer */}

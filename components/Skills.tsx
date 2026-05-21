@@ -104,7 +104,7 @@ export default function Skills() {
         {/* Header */}
         <div className="reveal text-center mb-16">
           <p className="text-cyan-400 text-sm font-mono font-medium tracking-widest uppercase mb-3">
-            // tech stack
+            {'// tech stack'}
           </p>
           <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
             Skills & Technologies
@@ -157,7 +157,7 @@ export default function Skills() {
         {/* Tech badges cloud */}
         <div className="reveal">
           <p className="text-center text-gray-500 text-sm mb-6 font-mono">
-            // all technologies
+            {'// all technologies'}
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             {techBadges.map((tech, i) => (
@@ -174,7 +174,7 @@ export default function Skills() {
 
         {/* Currently learning */}
         <div className="reveal mt-14 text-center">
-          <p className="text-gray-500 text-sm font-mono mb-4">// currently exploring</p>
+          <p className="text-gray-500 text-sm font-mono mb-4">{'// currently exploring'}</p>
           <div className="flex flex-wrap justify-center gap-3">
             {["Go", "VR Development", "Shader Programming", "AI Agents", "Pixel Art", "Self-hosted LLMs"].map(
               (item) => (

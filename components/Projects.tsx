@@ -118,7 +118,7 @@ export default function Projects() {
         {/* Section header */}
         <div className="reveal text-center mb-16">
           <p className="text-purple-400 text-sm font-mono font-medium tracking-widest uppercase mb-3">
-            // featured work
+            {'// featured work'}
           </p>
           <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
             Projects I&apos;ve Built

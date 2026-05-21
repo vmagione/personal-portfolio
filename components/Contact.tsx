@@ -82,7 +82,7 @@ export default function Contact() {
         {/* Header */}
         <div className="reveal text-center mb-16">
           <p className="text-pink-400 text-sm font-mono font-medium tracking-widest uppercase mb-3">
-            // get in touch
+            {'// get in touch'}
           </p>
           <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
             Let&apos;s Work Together

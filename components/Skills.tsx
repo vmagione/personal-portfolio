@@ -43,9 +43,9 @@ const skillGroups = [
     icon: "🎮",
     color: "orange",
     skills: [
-      { name: "Godot 4.x / GDScript", level: "Familiar" as ProficiencyLevel },
+      { name: "Godot 4.x / GDScript", level: "Proficient" as ProficiencyLevel },
       { name: "Game Architecture", level: "Familiar" as ProficiencyLevel },
-      { name: "Unity / C#", level: "Learning" as ProficiencyLevel },
+      { name: "Unity / C#", level: "Familiar" as ProficiencyLevel },
     ],
   },
 ];
